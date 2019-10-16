@@ -49,7 +49,30 @@
     // object ...spread - spread the original person object
     const captain3 = {...person};
     console.log('captain3', captain3);
-    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
 
+    /*
+        This is only 1 level deep - both for Arrays and Objects.
+        lodash has a cloneDeep method, but you should think twice before using it.
+    */
+    const coop = {
+        name: 'Coop',
+        age: 2,
+        social: {
+            instagram: '@hungryCoop',
+            twitter: '@CoopTheFoodie'
+        }
+    };
+    console.log('coop', coop);
+    
+    const copy = Object.assign({}, coop);
+    copy.name = "Coop Loo";
+    console.log('coop', coop, 'copy', copy);
+    // copy.social.instagram = '@curiousCoop';
+    // console.log('copy.social', copy.social, 'coop.social', coop.social,);
+    // The original object shouldn't be updated but it just updated...
+    // This is because `Object.assign` only works on 1 level deep.
+    // Use JSON.parse to track all the levels
+    const copy2 = JSON.parse(JSON.stringify(coop));
+    copy2.social.instagram = '@curiousCoop';
+    console.log('copy2.social', copy2.social, 'coop.social', coop.social);
 }());
-
