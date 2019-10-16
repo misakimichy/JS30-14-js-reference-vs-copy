@@ -2,7 +2,7 @@
     // start with strings, numbers and booleans
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
     
-    // Make a variable which references the players.
+    // Make a variable which references the players array:
     const team = players;
     console.log('players', players, 'team', team);
 
@@ -22,17 +22,33 @@
     const team4 = [...players];
     // now when we update it, the original one isn't changed
     team4[3] = 'Ada';
-    console.log('team2', team2, 'team3', team3, 'team4', team4);
-    console.log('players', players);
+    console.log('team2', team2, 'team3', team3, 'team4(updated [3] element)', team4);
+    console.log('players(not updated)', players);
+
+    const team5 = Array.from(players);
+    console.log('team5', team5);
+    team5[3] = "hello";
+    console.log('team5(update [3] element)', team5, 'players(not updated)', players);
+
+
     // The same thing goes for objects, let's say we have a person object
     // with Objects
     const person = {
-        name: 'Wes Bos',
+        name: 'Captain America',
         age: 80
     };
-    // and think we make a copy:
+    // Make a variable which references the players object:
+    // const captain = person;
+    // captain.number = 99;
+    // console.log('captain', captain);
+
     // how do we take a copy instead?
-    // We will hopefully soon see the object ...spread
+    const captain2 = Object.assign({},person, {age: 21});
+    console.log('person', person, 'captain2(age updated)', captain2);
+    
+    // object ...spread - spread the original person object
+    const captain3 = {...person};
+    console.log('captain3', captain3);
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
 
 }());
